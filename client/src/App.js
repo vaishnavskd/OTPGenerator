@@ -3,11 +3,12 @@ import EmailForm from './components/EmailForm';
 import OTPForm from './components/OTPForm';
 import axios from 'axios';
 import Main from './components/Main';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 const App = () => {
   const [showEmailForm, setShowEmailForm] = useState(true);
   const [email, setEmail] = useState('');
+  const navigate=useNavigate()
 
   const handleEmailSubmit = async (enteredEmail) => {
     try {
@@ -33,7 +34,7 @@ const App = () => {
       const result = response.data;
 
       if (result.success) {
-        alert("Welcome")
+        navigate('/main')
       } else {
         alert('Invalid OTP');
       }
